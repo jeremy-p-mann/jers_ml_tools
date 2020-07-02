@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 
-# Learn more: https://github.com/kennethreitz/setup.py
 
 from setuptools import setup, find_packages
 
 
-with open('README.rst') as f:
+with open('README.md') as f:
     readme = f.read()
 
 with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='sample',
+    name='jpmsklp',
     version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    description="Jeremy P Mann's custom pipe(lines)",
     long_description=readme,
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.com',
-    url='https://github.com/kennethreitz/samplemod',
+    author='Jeremy P Mann',
+    author_email='jmann277@gmail.com',
+    url='https://github.com/jmann277/jpm-skl-pipelines',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
