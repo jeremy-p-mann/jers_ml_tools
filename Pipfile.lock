@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "686ff726b0fb9c15440a9f1fb7b76dd22ff6b74be63ac6d88cbb7ffb5078cbd9"
+            "sha256": "76d6f26f6a3894095715717158d75a63a0de896f8e02307025415c261e84f5de"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -55,6 +55,10 @@
             ],
             "index": "pypi",
             "version": "==1.19.0"
+        },
+        "sample": {
+            "editable": true,
+            "path": "."
         },
         "scikit-learn": {
             "hashes": [
