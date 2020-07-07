@@ -9,7 +9,7 @@ verify_ssl = true
 numpy = "*"
 sklearn = "*"
 scipy = "*"
-sample = {editable = true, path = "."}
+jpmsklp = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"
