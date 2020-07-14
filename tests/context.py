@@ -8,3 +8,4 @@ sys.path.insert(0, os.path.abspath(
 import jpmsklp
 
 from jpmsklp.transformers.cumulants import CumulantsExtractor
+from jpmsklp.transformers.grayscaler import GrayScaler
