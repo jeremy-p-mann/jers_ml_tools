@@ -1,9 +1,5 @@
 import numpy as np
-
 from .context import CumulantsExtractor
-
-
-RANDOM_SEED = 10
 
 
 def test_cumulants_dirac_distribution():
@@ -18,8 +14,7 @@ def test_cumulants_dirac_distribution():
 
 def test_cumulants_normal_distribution():
     cumulants_extractor = CumulantsExtractor()
-
-    np.random.seed(RANDOM_SEED)
+    np.random.seed(42)
     X = np.random.normal(0, 1, (1, 10**5))
 
     cumulants_pred = cumulants_extractor.transform(X)
