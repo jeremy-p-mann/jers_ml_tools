@@ -10,6 +10,7 @@ numpy = "*"
 sklearn = "*"
 scipy = "*"
 jpmsklp = {editable = true, path = "."}
+sphinx = "*"
 
 [requires]
 python_version = "3.7"
