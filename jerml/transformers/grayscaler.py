@@ -17,13 +17,13 @@ class GrayScaler(BaseEstimator, TransformerMixin):
         Flattens the image so that it can be transformed into a form
         PCA can transform
         '''
-        X_flat = X.reshape(-1, X.shape[-1])
+        assert X.ndim == 4, "batch must be 4 dimensional"
+        n_color_channels = X.shape[-1]
+
+        X_flat = X.reshape(-1, n_color_channels)
         return X_flat
 
-    def _unflatten(self,
-                              X_grayscale_flat,
-                              image_dimensions,
-                              n_samples):
+    def _unflatten(self, X_grayscale_flat, n_samples, image_dimensions):
         '''
         Unflattens image, making it have shape (n_samples, n_x, n_y)
         '''
@@ -66,8 +66,6 @@ class GrayScaler(BaseEstimator, TransformerMixin):
 
         X_flat = self._flatten(X)
         X_grayscale_flat = self.pca.transform(X_flat)
-        X_grayscale = self._unflatten(X_grayscale_flat,
-                                                 image_dimensions,
-                                                 n_samples)
+        X_grayscale = self._unflatten(X_grayscale_flat, n_samples, image_dimensions)
         return X_grayscale
 
