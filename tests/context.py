@@ -5,7 +5,8 @@ import os
 sys.path.insert(0, os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')))
 
-import jpmsklp
+import jerml
 
-from jpmsklp.transformers.cumulants import CumulantsExtractor
-from jpmsklp.transformers.grayscaler import GrayScaler
+from jerml.transformers import CumulantsExtractor
+from jerml.transformers import GrayScaler
+from jerml.transformers import Reshaper 
