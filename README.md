@@ -1,2 +1,7 @@
-# jpm-skl-pipelines
-Random collection of scikit-learn pipes and pipelines
+# Jeremy Mann's Machine Learning Tools
+
+
+Random collection of ML tools (transformers, etc) primarily intended for personal use.
+
+
+
