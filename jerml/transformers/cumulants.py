@@ -44,15 +44,20 @@ class CumulantsExtractor(BaseEstimator, TransformerMixin):
             Training data, where n_samples is the number of samples
             and n_features is the number of features.
 
-        y: None
-            ignored variable
-
+        Returns
+        -------
+        cumulants: ndarray, shape = (n_samples, highest_cumulant)
+            cumulants of the empirical distribution determine by data
+            along axis=1
+            
         Example:
         --------
+        ```python
         >>> X  = np.ones(shape = (1, 100))
         >>> cumulants_extractor = CumulantsExtractor()
         >>> cumulants_extractor.transform(X)
         [1, 0, 0, 0]
+        ```
         '''
         cumulants = np.apply_along_axis(func1d=self._get_cumulants,
                                         axis=1,

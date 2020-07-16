@@ -4,8 +4,8 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 class GrayScaler(BaseEstimator, TransformerMixin):
     '''
-    Sci-kit learn transformer which transforms a batch color images
-    into a batch of grayscale images using 1-component PCA.
+    Transforms a batch color images into a batch of grayscale images
+    using 1-component PCA.
     '''
 
     def __init__(self):
