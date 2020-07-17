@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'Jer\'s ML Tools'
+NAME = 'jerml'
 DESCRIPTION = 'Some of Jeremy\'s ML Tools'
 URL = 'https://github.com/jmann277/jers_ml_tools'
 EMAIL = 'jmann277@gmail.com'
