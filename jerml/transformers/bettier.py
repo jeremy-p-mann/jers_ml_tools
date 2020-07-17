@@ -1,7 +1,9 @@
 # Gets betti numbers from images
 
-from homcv import betti_numbers
+import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
+
+from homcv import betti_numbers
 
 
 class Bettier(BaseEstimator, TransformerMixin):
@@ -34,6 +36,8 @@ class Bettier(BaseEstimator, TransformerMixin):
         X_transformed: ndarry, shape (n_samples, 2)
             Zeroeth and first Betti numbers of each image in the batch
         '''
-        X_transformed = None
+        betti_numbers_list = [betti_numbers(X[i, :, :])[None,:]
+                              for i in range(X.shape[0])]
+        X_transformed = np.concatenate(betti_numbers_list, axis=0)
         return X_transformed
 
