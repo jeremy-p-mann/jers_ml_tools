@@ -4,15 +4,16 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
+pytest = "*"
 sphinx = "*"
+jerml = {editable = true, path = "."}
 
 [packages]
 numpy = "*"
 sklearn = "*"
 scipy = "*"
-sphinx = "*"
 homcv = {editable = true, git = "https://github.com/jmann277/homcv.git"}
-jer-s-ml-tools = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"
