@@ -6,7 +6,7 @@ from .context import Bettier
 
 @pytest.fixture(scope='session')
 def blanks():
-    blanks = np.zeros(shape=(2,10,10))
+    blanks = np.zeros(shape=(3,5,5))
     return blanks
 
 @pytest.fixture(scope='session')
@@ -26,24 +26,31 @@ def circles(disks):
     circles[:, 3, 3] = 0
     return circles
 
+@pytest.fixture(scope='session')
+def circle_betti_numbers(bettier, blanks):
+    return bettier.transform(blanks) 
+
+def test_transform_dimensions(circle_betti_numbers):
+    assert circle_betti_numbers.ndim == 2
+
+def test_transform_n_samples(circle_betti_numbers):
+    assert circle_betti_numbers.shape[0] == 3
+
+def test_transform_n_features(circle_betti_numbers):
+    assert circle_betti_numbers.shape[1] == 2
+
 def test_blanks(bettier, blanks):
-    blank_betti_numbers = np.zeros(shape=(2, 2))
-    assert np.testing.assert_array_equal(
-        bettier.transform(blanks), 
-        blank_betti_numbers
-        )
+    blank_betti_numbers = np.zeros(shape=(3, 2))
+    blanks_transformed = bettier.transform(blanks)
+    np.testing.assert_equal(blanks_transformed, blank_betti_numbers)
 
 def test_disks(bettier, disks):
-    disk_betti_numbers = np.zeros(shape=(2, 2))
+    disk_betti_numbers = np.zeros(shape=(3, 2))
     disk_betti_numbers[:, 0] = 1
-    assert np.testing.assert_array_equal(
-        bettier.transform(disks),
-        disk_betti_numbers
-        )
+    disk_transformed = bettier.transform(disks)
+    np.testing.assert_equal(disk_transformed, disk_betti_numbers)
 
 def test_circles(bettier, circles):
-    circle_betti_numbers = np.ones(shape=(2, 2))
-    assert np.testing.assert_array_equal(
-        bettier.transform(circles),
-        circle_betti_numbers
-        )
+    circle_betti_numbers = np.ones(shape=( 3, 2))
+    circles_transformed = bettier.transform(circles)
+    np.testing.assert_equal(circles_transformed, circle_betti_numbers)
