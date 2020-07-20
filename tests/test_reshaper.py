@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 
-from .context import Reshaper
+from .context import jerml
+from jerml.transformers import Reshaper
 
 
 @pytest.fixture(scope='session')

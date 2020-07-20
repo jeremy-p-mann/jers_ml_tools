@@ -1,6 +1,6 @@
 import numpy as np
-from .context import CumulantsExtractor
-
+from .context import jerml
+from jerml.transformers import CumulantsExtractor
 
 def test_cumulants_dirac_distribution():
     cumulants_extractor = CumulantsExtractor()

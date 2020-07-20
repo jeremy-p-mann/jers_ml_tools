@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 
-from .context import GrayScaler
+from .context import jerml
+from jerml.transformers import GrayScaler
 
 
 @pytest.fixture(scope='session')

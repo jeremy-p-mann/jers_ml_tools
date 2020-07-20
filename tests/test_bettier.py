@@ -1,8 +1,8 @@
 import pytest
 import numpy as np
 
-from .context import Bettier
-
+from .context import jerml
+from jerml.transformers import Bettier
 
 @pytest.fixture(scope='session')
 def blanks():
