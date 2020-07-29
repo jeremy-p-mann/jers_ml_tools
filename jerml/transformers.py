@@ -1,5 +1,6 @@
 '''
-A medley of sklearn transformers
+This module contains a medley of sklearn transformers which can be integrated
+into a pipeline.
 '''
 
 import numpy as np
@@ -10,21 +11,30 @@ from homcv import betti_numbers
 
 
 class CumulantsExtractor(BaseEstimator, TransformerMixin):
-    '''
-    Sci-kit learn transformer computing cumulants less than or equal to 4,
-    or a specified highest cumulant.
+    '''Scikit-Learn transformer computing cumulants of the features.
 
-    If the input is an image, these cumulants may be conceptualized as
-    "textural" features
+    Cumulants are universal numerical invariants of probability
+    distributions. Their interpretation is context dependent. For example,
+    if the input is an image, these cumulants may be conceptualized as
+    "textural" features. 
 
-    Attributes:
-    -----------
-    highest_cumulant: int
-        highest cumultant to be computed,  cannot be strictly greater than 4
+    Note that this transformer can only compute the first 4 cumulants.
 
-    Parameters:
-    -----------
-    highest_cumulant_: int
+    Example
+    -------
+    >>> X  = np.ones(shape = (1, 100))
+    
+    This distribution is entirely "deterministic", and we should therefore 
+    expect it to have no cumulants higher that 1, and have an expectation
+    value of 1.
+
+    >>> cumulants_extractor = CumulantsExtractor()
+    >>> cumulants_extractor.transform(X)
+    [1, 0, 0, 0]
+
+    Attributes
+    ----------
+    highest_cumulant_ : int
         highest cumultant to be computed by the transform method.
     '''
 
@@ -44,8 +54,8 @@ class CumulantsExtractor(BaseEstimator, TransformerMixin):
         '''
         Computes cumulants of features less than the specified highest cumulant
 
-        Input:
-        ------
+        Parameters
+        ----------
         X : ndarray, shape (n_samples, n_features)
             Training data, where n_samples is the number of samples
             and n_features is the number of features.
@@ -55,15 +65,7 @@ class CumulantsExtractor(BaseEstimator, TransformerMixin):
         cumulants: ndarray, shape = (n_samples, highest_cumulant)
             cumulants of the empirical distribution determine by data
             along axis=1
-            
-        Example:
-        --------
-        ```python
-        >>> X  = np.ones(shape = (1, 100))
-        >>> cumulants_extractor = CumulantsExtractor()
-        >>> cumulants_extractor.transform(X)
-        [1, 0, 0, 0]
-        ```
+
         '''
         cumulants = np.apply_along_axis(func1d=self._get_cumulants,
                                         axis=1,
@@ -73,7 +75,8 @@ class CumulantsExtractor(BaseEstimator, TransformerMixin):
 
 
 class GrayScaler(BaseEstimator, TransformerMixin):
-    '''
+    '''Transforms a color image into grayscale.
+
     Transforms a batch color images into a batch of grayscale images
     using 1-component PCA.
     '''
@@ -118,15 +121,15 @@ class GrayScaler(BaseEstimator, TransformerMixin):
         Finds a gray-scale approximation to a batch of images
         using 1-component PCA in color space.
 
-        Inputs:
-        -------
+        Parameters
+        ----------
         X: ndarray, shape (n_samples, x_dim, y_dim, n_color_channels)
             Array of n_samples images, of size (x_dim, y_dim) with
             n_color_channels
 
-        Returns:
-        --------
-        X_grayscale: ndarray, shape (n_samples, x_dim, y_dim)
+        Returns
+        -------
+        X_grayscaled: ndarray, shape (n_samples, x_dim, y_dim)
             Array of n_samples grayscale images of the same size as the
             input X.
         '''
@@ -136,14 +139,17 @@ class GrayScaler(BaseEstimator, TransformerMixin):
 
         X_flat = self._flatten(X)
         X_grayscale_flat = self.pca.transform(X_flat)
-        X_grayscale = self._unflatten(X_grayscale_flat, n_samples, image_dimensions)
-        return X_grayscale
+        X_grayscaled = self._unflatten(X_grayscale_flat, n_samples, image_dimensions)
+        return X_grayscaled
 
 
 class Reshaper(BaseEstimator, TransformerMixin):
-    '''
-    Reshapes a 2d array(e.g. from a dataframe) into a ndarray of a
-    specified shape.
+    ''' Reshapes a 2d array into a ndarray of a specified shape.
+
+    Attributes
+    ----------
+    output_shape : tuple of int
+        shape of the output array
     '''
     
     def __init__(self, output_shape):
@@ -155,33 +161,33 @@ class Reshaper(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X, y=None):
-        ''' 
-        Reshapes the array
+        ''' Reshapes the array
 
-        Input
-        -----
-        X: ndarray shape (n_samples, input_dim)
+        Parameters
+        ----------
+        X : ndarray, shape (n_samples, input_dim)
             input data to be transformed
+
         Returns
         -------
-        X_trans: ndarray, shape (n_samples,) + self.output_shape
+        X_reshaped: ndarray, shape (n_samples,) + self.output_shape
+            Reshaped array
         '''
         X_transformed_shape = (X.shape[0], ) + self.output_shape
         return X.reshape(X_transformed_shape)
 
 
 class Bettier(BaseEstimator, TransformerMixin):
-    '''
-    Computes the Betti Numbers of the dark regions of a batch of images
+    '''Computes the Betti Numbers of the dark regions of a batch of images
 
-    Attributes:
-    -----------
-    threshold: float, optional
+    Attributes
+    ----------
+    threshold_ : float, optional
         The transform method computes the Betti numbers of the region 
         formed by any pixel darker than `threshold`.
     '''
-    def __init__(self, threshold=.5):
-        self.threshold = threshold
+    def __init__(self, threshold_=.5):
+        self.threshold_ = threshold_
 
     def fit(self, X, y=None):
         return self
@@ -190,17 +196,17 @@ class Bettier(BaseEstimator, TransformerMixin):
         '''
         Returns the betti numbers of the dark region of the images.
         
-        Inputs
-        ------
-        X: ndarray, shape (n_samples, n_x, n_y)
+        Parameters
+        ----------
+        X : ndarray, shape (n_samples, n_x, n_y)
             Batch of grayscale images.
         
         Returns
         -------
-        X_transformed: ndarry, shape (n_samples, 2)
+        X_transformed : ndarry, shape (n_samples, 2)
             Zeroeth and first Betti numbers of each image in the batch
         '''
-        betti_numbers_list = [betti_numbers(X[i, :, :])[None,:]
+        betti_numbers_list = [betti_numbers(X[i, :, :], self.threshold_)[None,:]
                               for i in range(X.shape[0])]
         X_transformed = np.concatenate(betti_numbers_list, axis=0)
         return X_transformed
