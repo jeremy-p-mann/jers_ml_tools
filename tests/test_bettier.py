@@ -11,7 +11,7 @@ def blanks():
 
 @pytest.fixture(scope='session')
 def bettier(blanks):
-    bettier = Bettier(threshold=.75).fit(blanks)
+    bettier = Bettier(threshold_=.75).fit(blanks)
     return Bettier()
 
 @pytest.fixture(scope='session')
