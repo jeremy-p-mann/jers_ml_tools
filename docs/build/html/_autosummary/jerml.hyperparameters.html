@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jerml.hyperparameters &mdash; Jeremy Mann&#39;s Machine Learning Tools 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="jerml.transformers" href="jerml.transformers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Jeremy Mann's Machine Learning Tools
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="jerml.transformers.html">jerml.transformers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">jerml.hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Jeremy Mann's Machine Learning Tools</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>jerml.hyperparameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_autosummary/jerml.hyperparameters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-jerml.hyperparameters">
+<span id="jerml-hyperparameters"></span><h1>jerml.hyperparameters<a class="headerlink" href="#module-jerml.hyperparameters" title="Permalink to this headline">¶</a></h1>
+<p>Generates hyperparameters for various ML models</p>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="jerml.hyperparameters.bagging_hyperparameters">
+<code class="sig-prename descclassname">jerml.hyperparameters.</code><code class="sig-name descname">bagging_hyperparameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_hyperparams</span></em>, <em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">42</span></em>, <em class="sig-param"><span class="n">n_estimators_support</span><span class="o">=</span><span class="default_value">1, 10000</span></em>, <em class="sig-param"><span class="n">max_features_support</span><span class="o">=</span><span class="default_value">0.1, 0.9</span></em>, <em class="sig-param"><span class="n">max_samples_support</span><span class="o">=</span><span class="default_value">0.9, 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.hyperparameters.bagging_hyperparameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a randomized cloud of hyperparameters for an
+sklearn bagging classifier/regressor</p>
+<p>There are three bagging hyperparameters:</p>
+<blockquote>
+<div><ul>
+<li><p>n_estimators: number of base estimators to be averaged</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>number of base estimators to use</p></li>
+<li><p>increasing n_estimators decreases variance, mildly increases bias</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>max_features: maximum number of features to give base esimator</p>
+<blockquote>
+<div><ul>
+<li><p>increases max_features increases variance, increases bias</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>increases effective dimension of base estimators</p></li>
+<li><p>increases correlation between base estimators</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>max_samples: max number of samples used to train each base estimator</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>primarily used to decrease computational burden of training</p></li>
+<li><p>decreasing max_samples increases both variance and bias</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperparameters</span> <span class="o">=</span> <span class="n">bagging_hyperparameters</span><span class="p">(</span><span class="n">n_hyperparams</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperparameters</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">[&#39;n_estimators&#39;, &#39;max_features&#39;, &#39;max_samples&#39;]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_hyperparams</strong> (<em>int</em>) – Number of hyperparameters to generate</p></li>
+<li><p><strong>n_estimators_support</strong> (<em>tuple of int</em><em>, </em><em>(</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em><em>(</em><em>1</em><em>, </em><em>10**4</em><em>)</em>) – min and max value of n_estimators hyperparatmeters.</p></li>
+<li><p><strong>max_features_support</strong> (<em>tuple of float</em><em>, </em><em>(</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em><em>(</em><em>1</em><em>, </em><em>9</em><em>)</em>) – min and max value of max_features hyperparatmeters. More specifically,
+what percent of the features are shown to the weak learners.</p></li>
+<li><p><strong>max_samples_support</strong> (<em>tuple</em><em>, </em><em>(</em><em>min_value</em><em>, </em><em>max_value</em><em>)</em><em>, </em><em>default=</em><em>(</em><em>9</em><em>, </em><em>1</em><em>)</em>) – min and max value of max_samples hyperparameters. More specifically,
+what percent of the samples are shown to the weak learners.</p></li>
+<li><p><strong>random_seed_support</strong> (<em>int</em><em>, </em><em>optional</em>) – random state used to generate hyperparameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>hyperparameters</strong> – dataframe containing values of the parameters for an Bagging
+Classifier/Regressor class:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>n_estimators</p></li>
+<li><p>max_features</p></li>
+<li><p>max_samples</p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dataframe, shape (n_hyperparams, 3)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="sphx-glr-clear"></div><dl class="py function">
+<dt id="jerml.hyperparameters.decision_tree_hyperparameters">
+<code class="sig-prename descclassname">jerml.hyperparameters.</code><code class="sig-name descname">decision_tree_hyperparameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_hyperparams</span></em>, <em class="sig-param"><span class="n">max_depth_support</span><span class="o">=</span><span class="default_value">3, 10</span></em>, <em class="sig-param"><span class="n">min_sample_split_support</span><span class="o">=</span><span class="default_value">0, 0.1</span></em>, <em class="sig-param"><span class="n">min_samples_leaf_support</span><span class="o">=</span><span class="default_value">0, 0.1</span></em>, <em class="sig-param"><span class="n">min_impurity_decrease_support</span><span class="o">=</span><span class="default_value">0, 0.1</span></em>, <em class="sig-param"><span class="n">criteria</span><span class="o">=</span><span class="default_value">['gini', 'entropy']</span></em>, <em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">42</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.hyperparameters.decision_tree_hyperparameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a randomized cloud of hyperparameters for an
+sklearn decision tree classifier/regressor</p>
+<p>Hyperparameters:</p>
+<blockquote>
+<div><ul>
+<li><p>max_depth</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>determines max_depth of tree</p></li>
+<li><p>increasing max_depth decreases bias, and increases variance</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>min_sample_split</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>minimum samples in a region required to make a split</p></li>
+<li><p>increasing min_sample_split decreases bias, and increases variance</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>min_samples_leaf</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensures no leaf contains less that min_samples_leaf samples</p></li>
+<li><p>increasing min_samples_leaf decreases bias, and increases variance</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>criterion</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>determines how tree decides to create a new branch</p></li>
+<li><p>unclear how this affects bias-variance decomposition</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>min_impurity_decrease</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ensures branch will only be created if it decreases the impurity by min_impurity_decrease</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperparameters</span> <span class="o">=</span> <span class="n">decision_tree_hyperparameters</span><span class="p">(</span><span class="n">n_hyperparams</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperparameters</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">[&#39;max_depth&#39;, &#39;min_sample_split&#39;, &#39;min_samples_leaf&#39;,</span>
+<span class="go">&#39;criterion&#39;, &#39;min_impurity_decrease&#39;]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_hyperparams</strong> (<em>int</em>) – Number of hyperparameters to generate.</p></li>
+<li><p><strong>max_depth_support</strong> (<em>tuple of int</em><em>, </em><em>(</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em><em>(</em><em>3</em><em>, </em><em>10</em><em>)</em>) – min and max value of the maximum tree depth hyperparatmeters.</p></li>
+<li><p><strong>min_sample_split_support</strong> (<em>tuple of float</em><em>, </em><em>(</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em>) – min and max percent of the samples must occur on a leaf
+to make an additional split</p></li>
+<li><p><strong>min_samples_leaf_support</strong> (<em>tuple</em><em>, </em><em>(</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em>) – min and max percent of the minimum number of samples required to be
+in a leaf.</p></li>
+<li><p><strong>criterion</strong> (<em>list of string</em><em>, </em><em>default=</em>) – Specifies whether to use gini and/or entropy criteria for splitting.</p></li>
+<li><p><strong>min_impurity_decrease_support</strong> (<em>tuple</em><em>, </em><em>(</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em>) – min and max value of mininumum decrease in the impurity caused by
+a split.</p></li>
+<li><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>default=42</em>) – random state used to generate hyperparameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>hyperparameters</strong> – dataframe containing values of the parameters for a
+Bagging regressor/classifier:</p>
+<ul class="simple">
+<li><p>max_depth</p></li>
+<li><p>min_samples_split</p></li>
+<li><p>min_samples_leaf</p></li>
+<li><p>min_impurity_decrease</p></li>
+<li><p>criteria</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dataframe, shape (n_hyperparams, 6)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="sphx-glr-clear"></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="jerml.transformers.html" class="btn btn-neutral float-left" title="jerml.transformers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Jeremy P Mann
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+jerml.transformers.GrayScaler
+=============================
+
+.. currentmodule:: jerml.transformers
+
+.. autoclass:: GrayScaler
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GrayScaler.__init__
+      ~GrayScaler.fit
+      ~GrayScaler.fit_transform
+      ~GrayScaler.get_params
+      ~GrayScaler.set_params
+      ~GrayScaler.transform
+   
+   
+
+   
+   
+   

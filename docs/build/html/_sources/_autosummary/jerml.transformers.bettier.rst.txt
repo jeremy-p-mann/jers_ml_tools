@@ -1,0 +1,27 @@
+jerml.transformers.Bettier
+==========================
+
+.. currentmodule:: jerml.transformers
+
+.. autoclass:: Bettier
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Bettier.__init__
+      ~Bettier.fit
+      ~Bettier.fit_transform
+      ~Bettier.get_params
+      ~Bettier.set_params
+      ~Bettier.transform
+   
+   
+
+   
+   
+   

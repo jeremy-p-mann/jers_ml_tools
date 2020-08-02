@@ -1,0 +1,27 @@
+jerml.transformers.Reshaper
+===========================
+
+.. currentmodule:: jerml.transformers
+
+.. autoclass:: Reshaper
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Reshaper.__init__
+      ~Reshaper.fit
+      ~Reshaper.fit_transform
+      ~Reshaper.get_params
+      ~Reshaper.set_params
+      ~Reshaper.transform
+   
+   
+
+   
+   
+   

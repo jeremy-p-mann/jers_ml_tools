@@ -1,0 +1,29 @@
+jerml.transformers.cumulants.CumulantsExtractor
+===============================================
+
+.. currentmodule:: jerml.transformers.cumulants
+
+.. autoclass:: CumulantsExtractor
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~CumulantsExtractor.fit
+      ~CumulantsExtractor.fit_transform
+      ~CumulantsExtractor.get_params
+      ~CumulantsExtractor.set_params
+      ~CumulantsExtractor.transform
+   
+   
+
+   
+   
+   

@@ -1,0 +1,20 @@
+.. currentmodule:: jerml.transformers
+Transformers
+============
+
+Below are a few custom scikit-learn transformers.
+
+.. autoclass:: Bettier
+   :members:
+
+ 
+.. autosummary:: 
+   :toctree: _autosummary/
+
+   Bettier
+   jerml.transformers.CumulantsExtractor
+   jerml.transformers.GrayScaler
+   jerml.transformers.Reshaper
+   
+
+

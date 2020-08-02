@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jerml.transformers &mdash; Jeremy Mann&#39;s Machine Learning Tools 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="jerml.hyperparameters" href="jerml.hyperparameters.html" />
+    <link rel="prev" title="API" href="../api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Jeremy Mann's Machine Learning Tools
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">jerml.transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jerml.hyperparameters.html">jerml.hyperparameters</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Jeremy Mann's Machine Learning Tools</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>jerml.transformers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_autosummary/jerml.transformers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-jerml.transformers">
+<span id="jerml-transformers"></span><h1>jerml.transformers<a class="headerlink" href="#module-jerml.transformers" title="Permalink to this headline">¶</a></h1>
+<p>This module contains a medley of sklearn transformers which can be integrated
+into a pipeline.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="jerml.transformers.Bettier">
+<em class="property">class </em><code class="sig-prename descclassname">jerml.transformers.</code><code class="sig-name descname">Bettier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">threshold_</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.Bettier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Betti Numbers of the dark regions of a batch of images</p>
+<dl class="py attribute">
+<dt id="jerml.transformers.Bettier.threshold_">
+<code class="sig-name descname">threshold_</code><a class="headerlink" href="#jerml.transformers.Bettier.threshold_" title="Permalink to this definition">¶</a></dt>
+<dd><p>The transform method computes the Betti numbers of the region
+formed by any pixel darker than <cite>threshold</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jerml.transformers.Bettier.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.Bettier.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the betti numbers of the dark region of the images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_x</em><em>, </em><em>n_y</em><em>)</em>) – Batch of grayscale images.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_transformed</strong> – Zeroeth and first Betti numbers of each image in the batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarry, shape (n_samples, 2)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="sphx-glr-clear"></div><dl class="py class">
+<dt id="jerml.transformers.CumulantsExtractor">
+<em class="property">class </em><code class="sig-prename descclassname">jerml.transformers.</code><code class="sig-name descname">CumulantsExtractor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">highest_cumulant</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.CumulantsExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scikit-Learn transformer computing cumulants of the features.</p>
+<p>Cumulants are universal numerical invariants of probability
+distributions. Their interpretation is context dependent. For example,
+if the input is an image, these cumulants may be conceptualized as
+“textural” features.</p>
+<p>Note that this transformer can only compute the first 4 cumulants.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This distribution is entirely “deterministic”, and we should therefore
+expect it to have no cumulants higher that 1, and have an expectation
+value of 1.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cumulants_extractor</span> <span class="o">=</span> <span class="n">CumulantsExtractor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cumulants_extractor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">[1, 0, 0, 0]</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt id="jerml.transformers.CumulantsExtractor.highest_cumulant_">
+<code class="sig-name descname">highest_cumulant_</code><a class="headerlink" href="#jerml.transformers.CumulantsExtractor.highest_cumulant_" title="Permalink to this definition">¶</a></dt>
+<dd><p>highest cumultant to be computed by the transform method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jerml.transformers.CumulantsExtractor.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.CumulantsExtractor.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes cumulants of features less than the specified highest cumulant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Training data, where n_samples is the number of samples
+and n_features is the number of features.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cumulants</strong> – cumulants of the empirical distribution determine by data
+along axis=1</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape = (n_samples, highest_cumulant)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="sphx-glr-clear"></div><dl class="py class">
+<dt id="jerml.transformers.GrayScaler">
+<em class="property">class </em><code class="sig-prename descclassname">jerml.transformers.</code><code class="sig-name descname">GrayScaler</code><a class="headerlink" href="#jerml.transformers.GrayScaler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a color image into grayscale.</p>
+<p>Transforms a batch color images into a batch of grayscale images
+using 1-component PCA.</p>
+<dl class="py method">
+<dt id="jerml.transformers.GrayScaler.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.GrayScaler.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits a 1-component PCA on the distributions of colors of all the
+pixels in the entire batch of images.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jerml.transformers.GrayScaler.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.GrayScaler.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a gray-scale approximation to a batch of images
+using 1-component PCA in color space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>x_dim</em><em>, </em><em>y_dim</em><em>, </em><em>n_color_channels</em><em>)</em>) – Array of n_samples images, of size (x_dim, y_dim) with
+n_color_channels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_grayscaled</strong> – Array of n_samples grayscale images of the same size as the
+input X.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_samples, x_dim, y_dim)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="sphx-glr-clear"></div><dl class="py class">
+<dt id="jerml.transformers.Reshaper">
+<em class="property">class </em><code class="sig-prename descclassname">jerml.transformers.</code><code class="sig-name descname">Reshaper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.Reshaper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reshapes a 2d array into a ndarray of a specified shape.</p>
+<dl class="py attribute">
+<dt id="jerml.transformers.Reshaper.output_shape">
+<code class="sig-name descname">output_shape</code><a class="headerlink" href="#jerml.transformers.Reshaper.output_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape of the output array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tuple of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jerml.transformers.Reshaper.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#jerml.transformers.Reshaper.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reshapes the array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>input_dim</em><em>)</em>) – input data to be transformed</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_reshaped</strong> – Reshaped array</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, shape (n_samples,) + self.output_shape</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="sphx-glr-clear"></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="jerml.hyperparameters.html" class="btn btn-neutral float-right" title="jerml.hyperparameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Jeremy P Mann
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

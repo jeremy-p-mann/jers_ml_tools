@@ -1,0 +1,5 @@
+Grayscaler
+==========
+
+.. automodule:: jerml.transformers.grayscaler
+   :members:

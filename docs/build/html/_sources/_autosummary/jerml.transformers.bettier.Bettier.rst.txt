@@ -1,0 +1,29 @@
+jerml.transformers.bettier.Bettier
+==================================
+
+.. currentmodule:: jerml.transformers.bettier
+
+.. autoclass:: Bettier
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Bettier.fit
+      ~Bettier.fit_transform
+      ~Bettier.get_params
+      ~Bettier.set_params
+      ~Bettier.transform
+   
+   
+
+   
+   
+   
