@@ -18,16 +18,24 @@ def bagging_hyperparameters(
     sklearn bagging classifier/regressor
 
     There are three bagging hyperparameters: 
+
         - n_estimators: number of base estimators to be averaged
+        
             - number of base estimators to use
             - increasing n_estimators decreases variance, mildly increases bias
+
         - max_features: maximum number of features to give base esimator
+
             - increases max_features increases variance, increases bias
+
                 - increases effective dimension of base estimators
                 - increases correlation between base estimators
+
         - max_samples: max number of samples used to train each base estimator
+
             - primarily used to decrease computational burden of training
             - decreasing max_samples increases both variance and bias
+
 
     Example
     -------
@@ -59,6 +67,7 @@ def bagging_hyperparameters(
     hyperparameters : Dataframe, shape (n_hyperparams, 3)
         dataframe containing values of the parameters for an Bagging
         Classifier/Regressor class:
+
             - n_estimators
             - max_features
             - max_samples
@@ -102,23 +111,30 @@ def decision_tree_hyperparameters(
     sklearn decision tree classifier/regressor
 
     Hyperparameters:
+
         - max_depth
+    
             - determines max_depth of tree
             - increasing max_depth decreases bias, and increases variance
+            
         - min_sample_split
+
             - minimum samples in a region required to make a split
-            - increasing min_sample_split decreases bias,
-            and increases variance
+            - increasing min_sample_split decreases bias, and increases variance
+
         - min_samples_leaf
+
             - Ensures no leaf contains less that min_samples_leaf samples
-            - increasing min_samples_leaf decreases bias,
-            and increases variance
+            - increasing min_samples_leaf decreases bias, and increases variance
+
         - criterion
+
             - determines how tree decides to create a new branch
             - unclear how this affects bias-variance decomposition
+
         - min_impurity_decrease
-            - ensures branch will only be created if it decreases the 
-            impurity by min_impurity_decrease
+
+            - ensures branch will only be created if it decreases the impurity by min_impurity_decrease
 
     Example
     -------
@@ -158,6 +174,7 @@ def decision_tree_hyperparameters(
     hyperparameters: Dataframe, shape (n_hyperparams, 6) 
         dataframe containing values of the parameters for a 
         Bagging regressor/classifier:
+
         - max_depth
         - min_samples_split
         - min_samples_leaf
