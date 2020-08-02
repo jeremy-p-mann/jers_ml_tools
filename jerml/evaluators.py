@@ -3,6 +3,47 @@ from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import RepeatedStratifiedKFold
 
 
+class CrossValidation:
+    '''
+    Assesses the model via stratified k-fold cross validation.
+
+    Input:
+    -----
+    Pipeline: sklearn pipeline
+        pipeline that will be evaluated
+        note that the fit method may include a hyperparameter search
+    X: ndarray,
+        feature data
+    y: ndarray
+        label data
+
+    Returns:
+    -------
+    average confusion matrix
+
+    std confusion matrix
+
+    skew confusion matrix
+
+    min confusion matrix 
+        'worst case scenario confusion matrix'
+
+    max confusion matrix
+        'best case scenario'
+    Example:
+    --------
+
+
+    '''
+    def __init__(self,n_splits, n_repeats, random_state):
+        n_splits = self.n_splits
+        n_repeats = self.n_repeats 
+        random_state = self.random_state
+
+    def evaluate(self, X, y):
+        pass
+
+
 def _strat_kfold_confusion_mat(model, X, y, n_splits=10, n_repeats=10, random_state = 42):
     """
 	Gives confusion matrices obtained from stratified k-fold cross validation. 
@@ -64,17 +105,3 @@ def _strat_kfold_confusion_mat(model, X, y, n_splits=10, n_repeats=10, random_st
 
     return (training_confusion_matrices, test_confusion_matrices)
 
-def _strat_kfold_confusion_matrix_summary_statistics(confusion_matrices):
-	pass
-
-
-def _strat_kfold_confusion_matrix_confidence_intervals(confusion_matrices, alpha = .05):
-	
-	pass 
-
-def strat_kfold_confusion_matrix_summary(model, X, y, n_splits=10, n_repeats=10, random_state=42):
-
-	pass
-
-def plot_strat_kfold_confusion_matrix_summary():
-	pass
