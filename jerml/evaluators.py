@@ -1,107 +1,62 @@
+``` 
+Evaluates the generalization error of a learning algorithm using 
+cross validation.
+```
+
 import numpy as np
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import RepeatedStratifiedKFold
 
 
-class CrossValidation:
+def cv_confusion_matrices(
+        pipeline,
+        X,
+        y,
+        train_test_ratio=.2,
+        n_repeats=10,
+        random_seed=42
+        ):
     '''
-    Assesses the model via stratified k-fold cross validation.
+    Generates train/test confusion matrices via cross validation
 
-    Input:
+    Input
     -----
-    Pipeline: sklearn pipeline
-        pipeline that will be evaluated
-        note that the fit method may include a hyperparameter search
-    X: ndarray,
-        feature data
-    y: ndarray
-        label data
+    pipeline : Pipeline
+        ML pipeline to be evaluated. 
 
-    Returns:
+    X : ndarray, shape (n_samples, ... )
+        Array of features
+
+    y : ndarray, shape (n_samples, ... ) 
+        Array of labels
+    
+    train_test_ratio : float, default=.2
+        Determines what proportion of the data will be used to evaluate the 
+        pipeline.
+
+    n_repeats : int, default =5
+        number of splits to be generated.        
+
+    random_seed : int, default=42
+        Controls the generation of the splits, ensuring reproducible outputs
+
+    Returns
     -------
-    average confusion matrix
+    training_confusion_matrices ndarray, shape=(k, n_labels, n_labels)
+        confusion matrices evaluated on training data for every split
 
-    std confusion matrix
+    test_confusion_matrices: ndarray, shape=(k, n_labels, n_labels)
+        confusion matrices evaluated on test data for every split
 
-    skew confusion matrix
-
-    min confusion matrix 
-        'worst case scenario confusion matrix'
-
-    max confusion matrix
-        'best case scenario'
-    Example:
-    --------
-
-
+    Example
+    -------
+    >>> from sklearn.linear_model import LogisticRegression
+    >>> X = [[1, 2], [2, 1], [1, 3], [0, 0]]
+    >>> y = [0, 1, 1, 0]
+    >>> pipeline = LogisticRegression() 
+    >>> training_cm, test_cm = cv_confusion_matrices(pipeline, X, y,
+    ...     n_repeats=1, )
+    [[0, 1], [0, 1]], [[0, 1,], [0, 1]]
     '''
-    def __init__(self,n_splits, n_repeats, random_state):
-        n_splits = self.n_splits
-        n_repeats = self.n_repeats 
-        random_state = self.random_state
-
-    def evaluate(self, X, y):
-        pass
-
-
-def _strat_kfold_confusion_mat(model, X, y, n_splits=10, n_repeats=10, random_state = 42):
-    """
-	Gives confusion matrices obtained from stratified k-fold cross validation. 
-
-	Inputs:
-	-------
-	model: 
-		sklearn estimator. it must have a fit and predict method
-	
-	X: ndarray, shape (number_of_samples, number_of_features)
-		training data features
-	
-	y: ndarry, shape (number_of_samples,)
-		training data labels
-
-	Returns
-	-------
-	training_confusion_matrix: ndarray, shape = (n_splits, n_labels, n_labels) 
-		n_repeats confusion matrices of model's prediction on training data
-
-	test_confusion_matrix: ndarray, shape = (n_splits, n_labels, n_labels)
-		n_repeats confusion matrices of model's prediction on training data
-
-    """
-    labels = np.unique(y)
-    training_confusion_matrix_list = []
-    validation_confusion_matrix_list = []
-
-    rskf = RepeatedStratifiedKFold(
-        n_splits=n_splits, n_repeats=n_repeats, random_state=random_state
-    )
-    splits = rskf.split(X, y)
-
-    for train_index, validation_index in splits:
-
-        X_train, X_validation = X[train_index], X[validation_index]
-        y_train, y_validation = y[train_index], y[validation_index]
-
-        model.fit(X_train, y_train)
-
-        y_train_pred = model.predict(X_train)
-        y_validation_pred = model.predict(X_test)
-
-        training_confusion_matrix = confusion_matrix(
-            y_train, y_train_pred, labels=labels, normalize="all"
-        )[:, :, None]
-        validation_confusion_matrix = confusion_matrix(
-            y_validation, y_validation_pred, labels=labels, normalize="all"
-        )[:, :, None]
-
-        training_confusion_matrix_list.append(training_confusion_matrix)
-        validation_confusion_matrix_list.append(validation_confusion_matrix)
-	# permute entries so that n_repeats is the 0-th dimension
-    training_confusion_matrices = np.concatenate(training_confusion_matrix_list, axis=2)
-    validation_confusion_matrices = np.concatenate(validation_confusion_matrix_list, axis=2)
-
-	training_confusion_matrices = np.transpose(training_confusion_matrices)
-	validation_confusion_matrices =  np.transpose(validation_confusion_matrices)
-
-    return (training_confusion_matrices, test_confusion_matrices)
+    pass
 
