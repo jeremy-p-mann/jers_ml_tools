@@ -7,3 +7,4 @@ JerML contains some tools Jeremy has found useful in a few of his projects.
    :maxdepth: 2
 
    api
+   theory/theory_main_page
