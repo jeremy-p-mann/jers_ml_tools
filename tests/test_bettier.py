@@ -40,17 +40,20 @@ def test_transform_n_features(circle_betti_numbers):
     assert circle_betti_numbers.shape[1] == 2
 
 def test_blanks(bettier, blanks):
+    '''Empty set has betti numbers 0, 0'''
     blank_betti_numbers = np.zeros(shape=(3, 2))
     blanks_transformed = bettier.transform(blanks)
     np.testing.assert_equal(blanks_transformed, blank_betti_numbers)
 
 def test_disks(bettier, disks):
+    '''disk has betti numbers 1, 0'''
     disk_betti_numbers = np.zeros(shape=(3, 2))
     disk_betti_numbers[:, 0] = 1
     disk_transformed = bettier.transform(disks)
     np.testing.assert_equal(disk_transformed, disk_betti_numbers)
 
 def test_circles(bettier, circles):
+    '''circle has betti number 1, 1'''
     circle_betti_numbers = np.ones(shape=( 3, 2))
     circles_transformed = bettier.transform(circles)
     np.testing.assert_equal(circles_transformed, circle_betti_numbers)
