@@ -15,12 +15,12 @@ def X(X_shape):
     return X
 
 @pytest.fixture(scope='session')
-def output_shape():
+def output_shape_():
     return (10, 15)
 
 @pytest.fixture(scope='session')
-def reshaper(X, output_shape):
-    reshaper = Reshaper(output_shape=output_shape).fit(X)
+def reshaper(X, output_shape_):
+    reshaper = Reshaper(output_shape_=output_shape_).fit(X)
     return reshaper
     
 @pytest.fixture(scope='session')
@@ -31,5 +31,5 @@ def X_transformed(X, reshaper):
 def test_output_n_samples(X_transformed, X):
     assert X_transformed.shape[0] == X.shape[0]
 
-def test_output_shape(output_shape, X_transformed):
-    assert X_transformed.shape[1:] == output_shape 
+def test_output_shape(output_shape_, X_transformed):
+    assert X_transformed.shape[1:] == output_shape_

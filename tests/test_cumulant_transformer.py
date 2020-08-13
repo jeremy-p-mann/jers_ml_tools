@@ -21,4 +21,8 @@ def test_cumulants_normal_distribution():
     cumulants_true = np.array([0, 1, 0,  0]).reshape(1, -1)
 
     np.testing.assert_allclose(
-        cumulants_pred, cumulants_true, rtol=0, atol=1e-1)
+        cumulants_pred,
+        cumulants_true,
+        rtol=0,
+        atol=1e-1
+        )

@@ -38,11 +38,15 @@ class CumulantsExtractor(BaseEstimator, TransformerMixin):
         highest cumultant to be computed by the transform method.
     '''
 
-    def __init__(self, highest_cumulant=4):
-        assert highest_cumulant <= 4, 'cannot compute cumulant higher than 4'
-        self.highest_cumulant_ = highest_cumulant
+    def __init__(self, highest_cumulant_=4):
+        assert highest_cumulant_ <= 4, 'cannot compute cumulant higher than 4'
+        self.highest_cumulant_ = highest_cumulant_
 
     def fit(self, X, y=None):
+        '''Do nothing and return the estimator unchanged
+
+        This method is just there to implement the usual API and hence work in pipelines.
+        '''
         return self
 
     def _get_cumulants(self, v):
@@ -65,12 +69,12 @@ class CumulantsExtractor(BaseEstimator, TransformerMixin):
         cumulants: ndarray, shape = (n_samples, highest_cumulant)
             cumulants of the empirical distribution determine by data
             along axis=1
-
         '''
-        cumulants = np.apply_along_axis(func1d=self._get_cumulants,
-                                        axis=1,
-                                        arr=X,
-                                        )
+        cumulants = np.apply_along_axis(
+                        func1d=self._get_cumulants,
+                        axis=1,
+                        arr=X,
+                        )
         return cumulants
 
 
@@ -91,15 +95,14 @@ class GrayScaler(BaseEstimator, TransformerMixin):
         PCA can transform
         '''
         assert X.ndim == 4, "batch must be 4 dimensional"
+
         n_color_channels = X.shape[-1]
 
         X_flat = X.reshape(-1, n_color_channels)
         return X_flat
 
     def _unflatten(self, X_grayscale_flat, n_samples, image_dimensions):
-        '''
-        Unflattens image, making it have shape (n_samples, n_x, n_y)
-        '''
+        ''' Unflattens image, making it have shape (n_samples, n_x, n_y) '''
         X_unflat = X_grayscale_flat.reshape(n_samples,
                                             image_dimensions[0],
                                             image_dimensions[1])
@@ -139,7 +142,11 @@ class GrayScaler(BaseEstimator, TransformerMixin):
 
         X_flat = self._flatten(X)
         X_grayscale_flat = self.pca.transform(X_flat)
-        X_grayscaled = self._unflatten(X_grayscale_flat, n_samples, image_dimensions)
+        X_grayscaled = self._unflatten(
+                            X_grayscale_flat,
+                            n_samples,
+                            image_dimensions
+                            )
         return X_grayscaled
 
 
@@ -148,15 +155,19 @@ class Reshaper(BaseEstimator, TransformerMixin):
 
     Attributes
     ----------
-    output_shape : tuple of int
+    output_shape_ : tuple of int
         shape of the output array
     '''
     
-    def __init__(self, output_shape):
-        self.output_shape = output_shape
+    def __init__(self, output_shape_):
+        self.output_shape_ = output_shape_
 
     def fit(self, X, y=None):
-        assert X.shape[1] == np.prod(np.array(self.output_shape)), ('output '
+        '''Do nothing and return the estimator unchanged
+
+        This method is just there to implement the usual API and hence work in pipelines.
+        '''
+        assert X.shape[1] == np.prod(np.array(self.output_shape_)), ('output '
         'size does not match input size')
         return self
 
@@ -173,7 +184,7 @@ class Reshaper(BaseEstimator, TransformerMixin):
         X_reshaped: ndarray, shape (n_samples,) + self.output_shape
             Reshaped array
         '''
-        X_transformed_shape = (X.shape[0], ) + self.output_shape
+        X_transformed_shape = (X.shape[0],) + self.output_shape_
         return X.reshape(X_transformed_shape)
 
 
@@ -190,6 +201,11 @@ class Bettier(BaseEstimator, TransformerMixin):
         self.threshold_ = threshold_
 
     def fit(self, X, y=None):
+        '''Do nothing and return the estimator unchanged
+
+        This method is just there to implement the usual API 
+        and hence work in pipelines.
+        '''
         return self
 
     def transform(self, X, y=None):
@@ -206,8 +222,10 @@ class Bettier(BaseEstimator, TransformerMixin):
         X_transformed : ndarry, shape (n_samples, 2)
             Zeroeth and first Betti numbers of each image in the batch
         '''
-        betti_numbers_list = [betti_numbers(X[i, :, :], self.threshold_)[None,:]
-                              for i in range(X.shape[0])]
+        betti_numbers_list = [
+                betti_numbers(X[i, :, :], self.threshold_)[None,:]
+                for i in range(X.shape[0])
+                ]
         X_transformed = np.concatenate(betti_numbers_list, axis=0)
         return X_transformed
 

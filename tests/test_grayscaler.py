@@ -51,7 +51,7 @@ def test_grayscaler_unflatten_n_samples(flattened_images,
 
 
 def test_grayscaler_transformer(grayscaler):
-    '''Grayscaling a grayscale image should have no effect'''
+    '''Grayscaling an image of a black dot should have no effect'''
     grayscale_image_batch_shape =  (2, 10, 15, 1)
 
     blank_images  = np.zeros(shape=grayscale_image_batch_shape)
